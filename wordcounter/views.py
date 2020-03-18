@@ -8,15 +8,11 @@ def about(request):
     return render(request, 'about.html', {'about': about})
 
 def homepage(request):
-    context = {
-        'no': 'no'
-    }
-    return render(request, 'home.html', context)
+    return render(request, 'home.html')
 
 def count(request):
     fulltext = request.GET['fulltext']
     wordlist = fulltext.split()
-    # wordlist.sort()
     worddictionary = {}
     
     for word in wordlist:
@@ -34,4 +30,5 @@ def count(request):
                'fulltext': fulltext,
                'sortedwords': sortedwords,
                }
+    
     return render(request, 'count.html', context)
